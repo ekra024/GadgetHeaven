@@ -1,0 +1,40 @@
+import React, { useContext } from "react";
+import MyContext from "../providers/MyContext";
+import { RxCross2 } from "react-icons/rx";
+
+const Cart = () => {
+  const { cart, removeFromCart } = useContext(MyContext);
+  console.log(cart);
+
+  
+
+  return (
+    <div className="w-10/12 mx-auto text-center">
+      <div className="flex justify-between my-5">
+        <h2>Cart</h2>
+        <div>
+          <p>Total Price: </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-2 pb-5">
+        {cart.map((item,idx) => (
+        <div key={idx} className="flex bg-white rounded-4xl p-2 h-[200px] items-center justify-between">
+          <div className="">
+            <img className="w-40 rounded-4xl" src={item.product_image} alt="" />
+          </div>
+          <div className="text-left">
+            <h2 className="font-bold mb-5">{item.product_title}</h2>
+            <p>Description: {item.description} </p>
+            <h3 className="font-semibold mt-5">Price: {item.price} </h3>
+          </div>
+          <div onClick={()=>removeFromCart(item.product_id)} className="border-2 rounded-full border-red-500">
+            <RxCross2 className="text-red-500"/>
+          </div>
+        </div>
+      ))}
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

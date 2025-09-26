@@ -1,0 +1,33 @@
+.active{
+  font-weight: 600;
+  font-size:16px;
+
+}
+.noactive{
+  font-size: 14px;
+  color:black;
+}
+
+.btn{
+  width: 100%;
+  background:  rgba(9, 8, 15, 0.05);
+  border-radius: 40px;
+  border:1px solid white;
+  font-weight:700;
+  font-size:14px;
+  padding:10px;
+  color: rgba(9, 8, 15, 0.6);
+  text-align: left;
+}
+.btn2{
+  width: 100%;
+  background:rgba(149,56,226,1);
+  border-radius: 40px;
+  border:1px solid white;
+  font-weight:700;
+  font-size:14px;
+  color: white;
+  text-align: left;
+  padding:10px;
+  text-align: center;
+}

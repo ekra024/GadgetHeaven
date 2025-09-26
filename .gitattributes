@@ -1,0 +1,17 @@
+# Enforce LF for all code files
+*.js   text eol=lf
+*.jsx  text eol=lf
+*.ts   text eol=lf
+*.tsx  text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# C++ related files
+*.cpp  text eol=lf
+*.h    text eol=lf
+*.hpp  text eol=lf
+
+# Treat everything else automatically
+* text=auto

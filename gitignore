@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# OS / IDE junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# C++ compiled files
+*.out
+*.o
+*.exe
+
+# Others
+package-lock.json
