@@ -12,6 +12,11 @@ const AuthProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [totalPrice, setTotalPrice] = useState(() => {
+    const saved = localStorage.getItem("totalPrice");
+    return saved ? JSON.parse(saved):(0);
+  });
+
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem("wishlist");
     return saved ? JSON.parse(saved) : [];
@@ -25,16 +30,28 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
+  useEffect(() => {
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+  },[totalPrice]);
+
   const addToCart = (product) => {
-    console.log(product)
-    if (!wishlist.find((item) => item.product_id === product.product_id)) {
+    
+    if (!cart.find((item) => item.product_id === product.product_id)) {
       setCart([...cart, product]);
-      console.log(cart)
+      const curPrice = totalPrice + product.price;
+      setTotalPrice(curPrice); 
       swal({
         title: "Product Added To Cart!",
         icon: "success",
       });
     }
+    else {
+      swal({
+        title: "Already Added",
+        icon: "warning"
+      })
+    }
+
   };
 
   const addToWishlist = (product) => {
@@ -46,10 +63,16 @@ const AuthProvider = ({ children }) => {
       });
      
     }
+    else {
+      swal({
+        title: "Alredy Added",
+        icon: "warning"
+      })
+    }
   };
 
-  const removeFromCart = (id) => {
-   
+  const removeFromCart = (product) => {
+    console.log(product);
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -58,7 +81,13 @@ const AuthProvider = ({ children }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-         setCart(cart.filter((item) => item.product_id !== id));
+        
+         const remain = cart.filter((item) => item.product_id !== product.product_id);
+         setCart(remain);
+
+         const curPrice = totalPrice - product.price;
+         setTotalPrice(curPrice);
+          
         swal("Poof! Your imaginary file has been deleted!", {
           icon: "success",
         });
@@ -90,11 +119,14 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     cart,
+    setCart,
     wishlist,
     addToWishlist,
     addToCart,
     removeFromCart,
     removeFromWishlist,
+    totalPrice,
+    setTotalPrice,
   };
 
   return <MyContext.Provider value={authInfo}>{children}</MyContext.Provider>;

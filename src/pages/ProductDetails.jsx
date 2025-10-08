@@ -4,6 +4,7 @@ import { Rating } from "react-simple-star-rating";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
 import MyContext from "../providers/MyContext";
+import { IoIosStar } from "react-icons/io";
 
 const ProductDetails = () => {
   const { product_id } = useParams();
@@ -22,8 +23,7 @@ const ProductDetails = () => {
     availability,
   } = product;
 
-  const {addToCart, addToWishlist} = useContext(MyContext);
-
+  const { addToCart, addToWishlist } = useContext(MyContext);
 
 
   return (
@@ -44,7 +44,7 @@ const ProductDetails = () => {
         </div>
         <div className="text-left py-10">
           <h1 className="font-bold text-2xl mb-1">{product_title}</h1>
-          <h3 className="font-light mb-3">Price:{price}</h3>
+          <h3 className="text-[rgba(135,135,135,1)] mb-3">Price: $ {price}</h3>
           <h2 className="mb-4">
             {availability ? (
               <button className="bg-[rgba(48,156,8,0.1)] rounded-full px-4 py-1 text-[rgba(48,156,8,1)] border-2 border-[rgba(48,156,8,1)]">
@@ -56,29 +56,50 @@ const ProductDetails = () => {
           </h2>
           <p className="mb-4">{description}</p>
           <div className="mb-4">
-            <h2 className="font-semibold">Specification: </h2>
+            <h2 className="font-semibold mb-2">Specification: </h2>
             {Specification.map((specific, idx) => (
-              <li className="list-decimal list-inside" key={idx}>
+              <li
+                className="list-decimal list-inside text-[rgba(9,8,15,0.6)]"
+                key={idx}
+              >
                 {specific}{" "}
               </li>
             ))}
           </div>
-          <h2 className="mb-5">Rating:{rating} </h2>
-          
-          <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
-            <Rating 
-            initialValue={rating}
-            readonly
-            allowFraction
-            size={25}
-            fillColor="#facc15" 
-            style={{display:'inline-flex'}}
-          />
+          <h2 className="mb-1 font-semibold flex items-center">
+            Rating: <IoIosStar className="text-yellow-300 text-xl" />{" "}
+          </h2>
+
+          <div className="flex items-center gap-2 mb-5">
+            <Rating
+              initialValue={rating}
+              readonly
+              size={27}
+              allowFraction
+              fillColor="orange"
+              emptyColor="gray"
+              transition
+              SVGstyle={{ display: "inline-block" }}
+            />
+            <p className="bg-[rgba(9,8,15,0.2)] rounded-xl px-2 ml-5 py-1 text-sm">{rating}</p>
+            
           </div>
 
           <div className="flex gap-2">
-            <button className="bg-purple-700 py-1 px-4 rounded-4xl flex items-center justify-center gap-2"> <p className="text-white" onClick={()=>addToCart(product)} >Add To Card  </p><AiOutlineShoppingCart className="text-xl text-white" /> </button>
-            <button onClick={()=> addToWishlist(product)} className="border-1 border-gray-200 p-1 rounded-full"> <IoMdHeartEmpty className="text-2xl"/>  </button>
+            <button className="bg-purple-700 py-1 px-4 rounded-4xl flex items-center justify-center gap-2">
+              {" "}
+              <p className="text-white" onClick={() => addToCart(product)}>
+                Add To Card{" "}
+              </p>
+              <AiOutlineShoppingCart className="text-xl text-white" />{" "}
+            </button>
+            <button
+              onClick={() => addToWishlist(product)}
+              className={`border-1 border-gray-200 p-2 rounded-full`}
+            >
+              {" "}
+              <IoMdHeartEmpty className="text-xl " />{" "}
+            </button>
           </div>
         </div>
       </div>

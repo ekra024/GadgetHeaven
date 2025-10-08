@@ -1,12 +1,20 @@
-# React + Vite
+# 🛒 Gadget Heaven
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It is an e-commerce platform for GadgetHaven, a gadget-buying website. The site should feature a structured navigationbar, product categories, and individual product details pages. Key functionalities include a shopping cart, a wishlist system, and product filtering. The Context API will manage the cart and wishlist, with optional LocalStorage for data persistence. Additional pages will allow users to view and manage their cart and wishlist, sort items by price, and ensure a smooth user experience. The site handle prevent errors when reloading.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [Gadget Heaven Live](https://reliable-bubblegum-351f06.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
+- Browse gadgets by category
+- Add products to cart and wishlist and manage the cart and wishlist
+- Responsive design for mobile and desktop
+- See Product Details
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚡ Technologies Used
+
+- HTML, CSS, JavaScript, Tailwind CSS, daisy UI 
+- Git, GitHub, VS Code
+- LocalStorage(for saving cart and wishlist)
+- React Icons, Google Fonts, Rating React Components
+
