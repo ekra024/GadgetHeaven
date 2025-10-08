@@ -11,7 +11,7 @@ It is an e-commerce platform for GadgetHaven, a gadget-buying website. The site 
 - See Product Details
 
 
-⚡ Technologies Used
+##⚡ Technologies Used
 
 - HTML, CSS, JavaScript, Tailwind CSS, daisy UI 
 - Git, GitHub, VS Code
