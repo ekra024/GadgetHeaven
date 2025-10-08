@@ -17,16 +17,19 @@ import Dashboard from './pages/Dashboard.jsx';
 import Cart from './pages/Cart.jsx';
 import Wishlist from './pages/Wishlist.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import Page404 from './pages/Page404.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<Page404 />,
     children:[
       {
         path:"/",
         element:<Home/>,
         loader:() => fetch('/gadget.json'),
+        errorElement:<Page404 />,
         children: [
           {
             path:"/",
@@ -34,7 +37,7 @@ const router = createBrowserRouter([
             loader: () => fetch('/gadget.json')
           },
           {
-            path:":category",
+            path:"/:category",
             element:<Category />,
             loader: () => fetch('/gadget.json')
           }
@@ -43,6 +46,7 @@ const router = createBrowserRouter([
       {
         path:"/dashboard",
         element:<Dashboard />,
+        errorElement:<Page404 />,
         children:[
           {
             path:"/dashboard/cart",
